@@ -28,7 +28,12 @@ export const Shower = ({ todos, update }: ShowerProps) => {
     }
   }
 
-  const deel = {
+  interface Deel {
+    name: string;
+    _delete: (name: string) => () => void;
+  }
+
+  const deel: Deel = {
     name: "",
     _delete: function (name: string) {
       const t = name;
@@ -58,7 +63,7 @@ export const Shower = ({ todos, update }: ShowerProps) => {
 
   return (
     <div className="shower mt-[100px] flex items-center justify-center text-white">
-      {todos.map((todo: Array<any>, index: number) => {
+      {todos.map((todo: Array<string>, index: number) => {
         let d = deel;
         deel.name = todo[0];
         return (
