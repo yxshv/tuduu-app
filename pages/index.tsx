@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { Bar } from './components/bar'
-import { Shower } from './components/shower'
+import { Bar } from '../components/bar'
+import { Shower } from '../components/shower'
 
 const Home: NextPage = () => {
 
@@ -30,7 +30,6 @@ const Home: NextPage = () => {
 		<>
 			<Head>
 				<title>Todo App</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main>
