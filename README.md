@@ -5,6 +5,9 @@ A Todo App made with Next.js
 </div>
 
 ***
+<div align="center">
+    <img src="giphy.gif">
+</div>
 
 ### License
 This project is licensed under the MIT license
