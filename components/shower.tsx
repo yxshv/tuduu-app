@@ -66,11 +66,7 @@ export const Shower = ({ todos, update }: ShowerProps) => {
       {todos.map((todo: Array<string>, index: number) => {
         let d = deel;
         deel.name = todo[0];
-        return (
-          <div key={index} className="todos">
-            <Todo todo={todo} change={change} del={d} />
-          </div>
-        );
+        return <Todo key={index} todo={todo} change={change} del={d} />;
       })}
     </div>
   );
