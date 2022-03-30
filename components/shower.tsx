@@ -62,7 +62,7 @@ export const Shower = ({ todos, update }: ShowerProps) => {
         let d = deel;
         deel.name = todo[0];
         return (
-          <div className="todos">
+          <div key={index} className="todos">
             <Todo todo={todo} change={change} del={d} />
           </div>
         );
