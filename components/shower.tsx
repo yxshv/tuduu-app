@@ -1,6 +1,11 @@
 import { Todo } from "./todo";
 
-export const Shower = ({ todos, update }: any) => {
+interface ShowerProps {
+  todos: string[][];
+  update: (todos: string[][]) => void;
+}
+
+export const Shower = ({ todos, update }: ShowerProps) => {
   function change(e: any) {
     let data = localStorage.getItem("todos");
 
