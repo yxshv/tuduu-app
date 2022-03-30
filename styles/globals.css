@@ -1,3 +1,126 @@
+@import url(https://use.fontawesome.com/releases/v5.15.3/css/all.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --bg-color: rgb(27, 32, 44);
+    --accent-color: rgb(107 33 168);
+    --bg-color-2: rgb(74, 84, 111);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+.bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bar input {
+    width: 600px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0 50px;
+    margin-top: 30px;
+    background-color: var(--bg-color-2);
+    outline-color: var(--accent-color);
+    outline-width: 3px;
+    border-width: 3px;
+    border-color: var(--bg-color);
+    outline-style: solid;
+    font-weight: bold;
+    color: white;
+}
+
+.h1 {
+    color: white;
+}
+
+.add-btn {
+    display: block;
+    background-color: var(--accent-color);
+    margin-top: 10px;
+}
+
+.add-btn:disabled {
+    opacity: .7;
+}
+
+.add-btn:active {
+    opacity: .7;
+}
+
+.shower {
+    display: flex;
+    flex-direction: column
+}
+
+.todos {
+    margin: 4px;
+    min-width: 500px;
+}
+
+.todos .todo {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: .3rem;
+    padding: 15px;
+    border-width: .2em;
+    border-color: var(--accent-color);
+}
+
+.todo input[type="checkbox"] {
+    font-family: "Font Awesome 5 Free";
+    cursor: pointer;
+    border-width: .2em;
+    margin-right: 10px;
+    border-color: var(--accent-color);
+    height: 20px;
+    width: 20px;
+    border-radius: .2em;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.todo-stuffs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo label {
+    display: inline;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.todo input[type="checkbox"]:checked {
+    background: var(--accent-color);
+}
+
+.todo input[type="checkbox"]:checked+label {
+    text-decoration: line-through;
+    color: gray;
+    text-decoration-thickness: .1rem;
+}
+
+.todo button {
+    padding: .4rem;
+    border-radius: 5px;
+    background: var(--accent-color);
+    width: 80px;
+}
