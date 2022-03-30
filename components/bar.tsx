@@ -16,7 +16,8 @@ export const Bar = ({ update }: BarProps) => {
 
     let data = localStorage.getItem("todos");
 
-    let json;
+    // TODO: add json type, im not sure what you're doing here but add the type of json here
+    let json: any = {};
 
     if (!data) {
       json = {};
@@ -44,7 +45,7 @@ export const Bar = ({ update }: BarProps) => {
         <input
           type="text"
           placeholder="Add a todo"
-          className=" block"
+          className="block"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
