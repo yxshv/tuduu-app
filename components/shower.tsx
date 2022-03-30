@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { Todo } from "./todo";
 
 interface ShowerProps {
@@ -6,7 +7,7 @@ interface ShowerProps {
 }
 
 export const Shower = ({ todos, update }: ShowerProps) => {
-  function change(e: any) {
+  function change(e: ChangeEvent<HTMLInputElement>) {
     let data = localStorage.getItem("todos");
 
     if (!data) {
