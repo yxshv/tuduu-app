@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export const Bar = ({ update }: any) => {
+type BarProps = {
+  update: (todos: Array<Array<string>>) => void;
+};
+
+export const Bar = ({ update }: BarProps) => {
   const [todo, setTodo] = useState("");
 
   function addTodo() {
