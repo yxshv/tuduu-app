@@ -49,6 +49,7 @@ export const Bar = ({ update }: BarProps) => {
                     placeholder="Add a todo"
                     className="block"
                     value={todo}
+                    onKeyUp={(e) => { if (e.key === "Enter") { addTodo() } }}
                     onChange={(e) => setTodo(e.target.value)}
                 />
                 <button
