@@ -1,33 +1,33 @@
 import { ChangeEvent } from "react";
 
-interface TodoProps {
-  todo: string[];
-  change: (e: ChangeEvent<HTMLInputElement>) => void;
-  del: {
+interface TodoI {
     name: string;
-    _delete: (name: string) => () => void;
-  };
+    done: boolean;
 }
 
-// TODO: todo is an array and at todo[1] there is a boolean whereas you've typed it as an array of strings. i have already made the interaface for you, you just need to fix your types.
+interface TodoProps {
+    todo: TodoI;
+    change: (e: ChangeEvent<HTMLInputElement>) => void;
+    del: (name: string) => any;
+}
 
-export const Todo = ({ todo, change, del }: any) => {
-  return (
-    <div className="todos">
-      <div className="todo">
-        <div className="todo-stuffs">
-          <input
-            type="checkbox"
-            checked={todo[1]}
-            onChange={change}
-            id={todo[0]}
-          />
-          <label>{todo}</label>
+export const Todo = ({ todo, change, del }: TodoProps) => {
+    return (
+        <div className="todos">
+            <div className="todo">
+                <div className="todo-stuffs">
+                    <input
+                        type="checkbox"
+                        checked={todo.done}
+                        id={todo.name}
+                        onChange={change}
+                    />
+                    <label>{todo.name}</label>
+                </div>
+                <button type="button" onClick={del(todo.name)}>
+                    Delete
+                </button>
+            </div>
         </div>
-        <button type="button" onClick={del._delete(todo[0])}>
-          Delete
-        </button>
-      </div>
-    </div>
-  );
+    );
 };

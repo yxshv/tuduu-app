@@ -1,73 +1,72 @@
 import { ChangeEvent } from "react";
 import { Todo } from "./todo";
 
+interface TodoI {
+	name: string;
+	done: boolean;
+}
+
 interface ShowerProps {
-  todos: string[][];
-  update: (todos: string[][]) => void;
+	todos: Array<TodoI>;
+	update: (todos: Array<TodoI>) => void;
 }
 
 export const Shower = ({ todos, update }: ShowerProps) => {
-  function change(e: ChangeEvent<HTMLInputElement>) {
-    let data = localStorage.getItem("todos");
 
-    if (!data) {
-      update([]);
-    } else {
-      let result = [];
-      let json = JSON.parse(data);
-      json[`${e.target.id}`] = e.target.checked;
+	function change(e: ChangeEvent<HTMLInputElement>) {
+		let data = localStorage.getItem("todos");
 
-      for (const key in json) {
-        if (json.hasOwnProperty(key)) {
-          result.push([key, json[key]]);
-        }
-      }
+		if (!data) {
+			update([]);
+		} else {
+			let json = JSON.parse(data);
+			json[`${e.target.id}`] = e.target.checked;
 
-      localStorage.setItem(`todos`, JSON.stringify(json));
-      update(result);
-    }
-  }
+			let result = [];
 
-  interface Deel {
-    name: string;
-    _delete: (name: string) => () => void;
-  }
+			for (const key in json) {
+				if (json.hasOwnProperty(key)) {
+					result.push({ name: key, done: json[key] });
+				}
+			}
 
-  const deel: Deel = {
-    name: "",
-    _delete: function (name: string) {
-      const t = name;
-      return function () {
-        let data = localStorage.getItem("todos");
+			localStorage.setItem(`todos`, JSON.stringify(json));
+			update(result);
+		}
+	}
 
-        if (!data) {
-          update([]);
-        } else {
-          let result = [];
-          let json = JSON.parse(data);
+	function del(name: string) {
+		const t = name;
 
-          delete json[`${t}`];
+		return function (e: any) {
+			let data = localStorage.getItem("todos");
 
-          for (const key in json) {
-            if (json.hasOwnProperty(key)) {
-              result.push([key, json[key]]);
-            }
-          }
+			if (!data) {
+				update([]);
+			} else {
+				let json = JSON.parse(data);
 
-          localStorage.setItem(`todos`, JSON.stringify(json));
-          update(result);
-        }
-      };
-    }
-  };
+				delete json[`${t}`];
 
-  return (
-    <div className="shower mt-[100px] flex items-center justify-center text-white">
-      {todos.map((todo: Array<string>, index: number) => {
-        let d = deel;
-        deel.name = todo[0];
-        return <Todo key={index} todo={todo} change={change} del={d} />;
-      })}
-    </div>
-  );
+				let result = [];
+
+				for (const key in json) {
+					if (json.hasOwnProperty(key)) {
+						result.push({ name: key, done: json[key] });
+					}
+				}
+
+				localStorage.setItem(`todos`, JSON.stringify(json));
+				update(result);
+			}
+		}
+	}
+
+	return (
+		<div className="shower mt-[100px] flex items-center justify-center text-white">
+			{todos.map((todo: TodoI, index: number) => {
+				return <Todo key={index} todo={todo} change={change} del={del} />;
+			})}
+		</div>
+	);
 };
