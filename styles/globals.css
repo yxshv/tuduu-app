@@ -124,3 +124,16 @@ body {
     background: var(--accent-color);
     width: 80px;
 }
+
+@media (max-width: 600px) {
+
+    .bar input,
+    .bar button {
+        width: 90%;
+    }
+
+    .shower .todos {
+        min-width: 90%;
+    }
+
+}
