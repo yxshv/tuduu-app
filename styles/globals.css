@@ -106,6 +106,8 @@ body {
     display: inline;
     color: whitesmoke;
     font-weight: bold;
+    word-wrap: break-word;
+    max-width: 300px;
 }
 
 .todo input[type="checkbox"]:checked {
@@ -134,6 +136,10 @@ body {
 
     .shower .todos {
         min-width: 90%;
+    }
+
+    .shower .todos .todo label {
+        max-width: 40vw;
     }
 
 }
