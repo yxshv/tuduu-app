@@ -1,5 +1,5 @@
 <div align="center">
-<h1 align="center">Welcome to todo-app</h1>
+<h1 align="center">Welcome to tuduu-app</h1>
 <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg" /><br>
 A Todo App made with Next.js
 </div>
