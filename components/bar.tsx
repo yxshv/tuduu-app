@@ -64,5 +64,3 @@ export const Bar = ({ update }: BarProps) => {
         </>
     );
 };
-
-// 
